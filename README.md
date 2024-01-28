@@ -62,6 +62,12 @@ Any contiguous path consisting of a combination of line segments, circular arcs 
 * The instances can either be distributed automatically along the path or a fixed distance can be set between the instances by right clicking and selecting "Set fixed distance between instances"
 * To apply the pattern press `space` or right right click and select "Accept"
 
+## Installation
+
+Copy [copytools.lua](copytools.lua) to a location found by IPE.
+
+(Normally this is `~/.ipe/ipelets` for Linux and `%userprofile%\ipelets` for Windows (see Help->Show configuration))
+
 ## Technical Details & Lessons Learned
 
 * The implementation of linear and circular patterns was relatively straight forward
