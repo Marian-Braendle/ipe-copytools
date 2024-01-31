@@ -14,6 +14,7 @@ local DEFAULT_NINSTANCES = 5
 -- shortcuts.ipelet_3_copytools = "Ctrl+Alt+P"
 
 ---Global constants/functions
+transformShape = _G.transformShape
 type = _G.type
 M = ipe.Matrix
 V = ipe.Vector
@@ -54,25 +55,6 @@ local function cloneTable(tab)
         cloned[cloneTable(k)] = cloneTable(v)
     end
     return _G.setmetatable(cloned, _G.getmetatable(tab))
-end
-
-local function transformShape(matrix, shape) -- Copied from main.lua
-    for _, path in ipairs(shape) do
-        if path.type == "ellipse" or path.type == "closedspline" then
-            for i = 1, #path do
-                path[i] = matrix * path[i]
-            end
-        else -- must be "curve"
-            for _, seg in ipairs(path) do
-                for i = 1, #seg do
-                    seg[i] = matrix * seg[i]
-                end
-                if seg.type == "arc" then
-                    seg.arc = matrix * seg.arc
-                end
-            end
-        end
-    end
 end
 
 ---Calculate corrected matrix respecting the transformation type
